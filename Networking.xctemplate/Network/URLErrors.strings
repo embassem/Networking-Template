@@ -1,0 +1,10 @@
+/* 
+  Errors.strings
+  Antame-iOS
+
+  Created by Bassem Abbas on 6/14/18.
+  Copyright © 2018 Ibtikar Technologies, Co. Ltd. . All rights reserved.
+*/
+"error_get_data" = "خطا في تحميل البيانات";
+"error_no_internet" = "تحقق من الاتصال بالانترنت";
+"error_unknown" = "هناك خطا ما";
