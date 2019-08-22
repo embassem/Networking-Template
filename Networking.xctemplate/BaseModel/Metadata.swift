@@ -1,11 +1,10 @@
 //
 //	Metadata.swift
-//  PME_iOS
+//  ___PROJECTNAME___/Networking
 //
-//  Created Bassem Abbas on 2/13/19.
-//  Copyright © 2019 Ibtikar Technologies, Co. Ltd. All rights reserved.
+//  Created by Bassem Abbas on 4/12/18.
+//  Copyright © ___YEAR___ Ibtikar Technologies, Co. Ltd. All rights reserved.
 //
-//	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
 
 import Foundation
 import ObjectMapper
