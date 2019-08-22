@@ -1,17 +1,19 @@
 //
 //  GenaricModel.swift
-//  ___PROJECTNAME___/Networking
+//  PME_iOS
 //
-//  Created by Bassem Abbas on 4/12/18.
-//  Copyright © ___YEAR___ Ibtikar Technologies, Co. Ltd. All rights reserved.
+//  Created Bassem Abbas on 2/13/19.
+//  Copyright © 2019 Ibtikar Technologies, Co. Ltd. All rights reserved.
 //
 
 import Foundation
 import ObjectMapper
 
-open class GenaricModel<T: Mappable> : BaseModel {
+//swiftlint:disable all
 
-    public var response: T?
+open class GenaricModel<T: Mappable> : BaseResponse {
+
+    public var data: T?
 
     override class func newInstance(map: Map) -> Mappable? {
         return GenaricModel<T>()
@@ -23,14 +25,18 @@ open class GenaricModel<T: Mappable> : BaseModel {
         super.init()
     }
 
-    init(response: T) {
+    init(_ object: T) {
         super.init()
-        self.response = response
+    }
+
+    init(data: T) {
+        super.init()
+        self.data = data
     }
     override open func mapping(map: Map) {
         super.mapping(map: map)
 
-        response <- map["response"]
+        data <- map["data"]
 
     }
 
@@ -41,7 +47,7 @@ open class GenaricModel<T: Mappable> : BaseModel {
     @objc public required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        response = aDecoder.decodeObject(forKey: "response") as? T
+        data = aDecoder.decodeObject(forKey: "data") as? T
 
     }
 
@@ -52,15 +58,16 @@ open class GenaricModel<T: Mappable> : BaseModel {
     @objc override public func encode(with aCoder: NSCoder) {
         super.encode(with: aCoder)
 
-        if response != nil {
-            aCoder.encode(response, forKey: "response")
+        if data != nil {
+            aCoder.encode(data, forKey: "data")
         }
 
     }
 }
-open class GenaricArray<T: Mappable> : BaseModel {
 
-    public var response: [T]?
+open class GenaricArray<T: Mappable> : BaseResponse {
+
+    public var data: [T]?
 
     override class func newInstance(map: Map) -> Mappable? {
         return GenaricArray<T>()
@@ -72,9 +79,14 @@ open class GenaricArray<T: Mappable> : BaseModel {
         super.init()
     }
 
+    init(_ array: [T]) {
+        super.init()
+        self.data = array
+    }
+
     override open func mapping(map: Map) {
         super.mapping(map: map)
-        response <- map["response"]
+        data <- map["data"]
     }
 
     /**
@@ -84,7 +96,7 @@ open class GenaricArray<T: Mappable> : BaseModel {
     @objc public required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        response = aDecoder.decodeObject(forKey: "response") as?  [T]
+        data = aDecoder.decodeObject(forKey: "data") as?  [T]
 
     }
 
@@ -95,16 +107,16 @@ open class GenaricArray<T: Mappable> : BaseModel {
     @objc override public func encode(with aCoder: NSCoder) {
         super.encode(with: aCoder)
 
-        if response != nil {
-            aCoder.encode(response, forKey: "response")
+        if data != nil {
+            aCoder.encode(data, forKey: "data")
         }
 
     }
 }
 
-open class GenaricType<T: Any> : BaseModel {
+open class GenaricType<T: Any> : BaseResponse {
 
-    public var response: T?
+    public var data: T?
 
     override class func newInstance(map: Map) -> Mappable? {
         return GenaricType<T>()
@@ -119,7 +131,7 @@ open class GenaricType<T: Any> : BaseModel {
     override open func mapping(map: Map) {
         super.mapping(map: map)
 
-        response <- map["response"]
+        data <- map["data"]
 
     }
 
@@ -130,7 +142,7 @@ open class GenaricType<T: Any> : BaseModel {
     @objc required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        response = aDecoder.decodeObject(forKey: "response") as? T
+        data = aDecoder.decodeObject(forKey: "data") as? T
 
     }
 
@@ -141,8 +153,8 @@ open class GenaricType<T: Any> : BaseModel {
     @objc override public func encode(with aCoder: NSCoder) {
         super.encode(with: aCoder)
 
-        if response != nil {
-            aCoder.encode(response, forKey: "response")
+        if data != nil {
+            aCoder.encode(data, forKey: "data")
         }
 
     }
